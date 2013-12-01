@@ -1,8 +1,8 @@
 var config = {
 		ip: '0.0.0.0',
 		port: '9001',
-		index: 'index.html',
-		root: 'testsite/'
+		root: 'testsite',
+		index: 'index.html'
 	},
 	tools = require('./tools'),
 	http = require('http'),
@@ -11,10 +11,12 @@ var config = {
 
 var routes = [{
 		url: '/',
-		template: config.index
+		template: config.index,
+		title: 'Home'
 	},{
 		url: '/other',
-		template: 'other.html'
+		template: 'other.html',
+		title: 'Other'
 	}];
 
 http.createServer(function (request, response) {
@@ -38,17 +40,22 @@ http.createServer(function (request, response) {
 		});
 	}
 
+	function createPage (route) {
+		response.write(tools.template(config.root+'/'+route.template, {page: {title: route.title}}));
+		response.end();
+	}
+
 	var path = url.parse(request.url).pathname;
 
 	tools.setMimeTypes(request, response);
 
 	if (!routes.some(function (route) {
 		if (route.url === path) {
-			serveFile(route.template);
+			createPage(route);
 			return true;
 		}
 	})) {
-		serveFile(path.substring(1));
+		serveFile(path);
 	}
 
 }).listen(config.port, config.ip);
