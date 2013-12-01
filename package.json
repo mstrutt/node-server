@@ -1,0 +1,19 @@
+{
+  "name": "node-server",
+  "version": "0.0.0",
+  "description": "Working on a node.js server to suit my purposes",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mstrutt/node-server.git"
+  },
+  "author": "Michael Strutt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mstrutt/node-server/issues"
+  }
+}
