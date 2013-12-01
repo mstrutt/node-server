@@ -32,7 +32,6 @@ http.createServer(function (request, response) {
 		path = config.root+path;
 		fs.exists(path, function (exists) {
 			if (exists) fs.readFile(path, function (err, data) {
-				/*header.headers['Last-Modified'] = (fs.statSync(path)).mtime;*/
 				response.end(data);
 				console.log('serving '+path);
 			});
@@ -41,8 +40,8 @@ http.createServer(function (request, response) {
 	}
 
 	function createPage (route) {
-		response.write(tools.template(config.root+'/'+route.template, {page: {title: route.title}}));
-		response.end();
+		response.end(tools.template(config.root+'/'+route.template, {page: {title: route.title}}));
+		console.log('creating '+config.root+'/'+route.template);
 	}
 
 	var path = url.parse(request.url).pathname;
