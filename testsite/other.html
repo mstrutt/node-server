@@ -1,9 +1,13 @@
 <!doctype HTML>
 <html>
 	<head>
-		<title>That other page</title>
+		<%@ include('parts/head.html') %>
+
+		<title><%= page.title %></title>
 	</head>
 	<body>
-		<h1>That other page</h1>
+		<%@ include('parts/header.html') %>
+		<h2>That other page</h2>
 	</body>
 </html>
+

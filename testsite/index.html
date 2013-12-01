@@ -1,9 +1,13 @@
 <!doctype HTML>
 <html>
 	<head>
-		<title>Some crap</title>
+		<%@ include('parts/head.html') %>
+
+		<title><%= page.title %></title>
 	</head>
 	<body>
-		<h1>It worked again!</h1>
+		<%@ include('parts/header.html') %>
+		<h2>It worked again!</h2>
 	</body>
 </html>
+
